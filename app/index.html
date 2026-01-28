@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-italic text-red-600">Hello Tailwind</h1>
+
+    <!-- Nav bar -->
+
+    <!-- Fixed Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center justify-center flex-1 mx-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Home</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Despre noi</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Servicii</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Locatii</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Doctori</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-700 transition-colors">Tarife</a>
+                    </div>
+                </div>
+
+                <!-- Desktop Login -->
+                <div class="hidden md:flex items-center">
+                    <a href="#" class="bg-web-dark-blue text-web-white px-6 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2">
+                        <img src="more.png" alt="Menu" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-3">
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Home</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Despre noi</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Servicii</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Locatii</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Doctori</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Tarife</a>
+                <a href="#" class="block bg-blue-600 text-white text-center px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+<section class="relative h-[70vh] overflow-hidden">
+    <!-- Carousel Container -->
+    <div class="carousel-container relative w-full h-full">
+        <!-- Slide 1 -->
+        <div class="carousel-slide absolute inset-0 opacity-100 z-0 transition-opacity duration-1000">
+            <img src="clinic-1.jpg" alt="Clinicum Center" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide absolute inset-0 opacity-0 z-0 transition-opacity duration-1000">
+            <img src="clinic-2.jpg" alt="Clinicum Center" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide absolute inset-0 opacity-0 z-0 transition-opacity duration-1000">
+            <img src="clinic-3.jpg" alt="Clinicum Center" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="absolute inset-0 flex items-center justify-center md:justify-start md:pl-32 lg:pl-40 z-10">
+            <div class="text-center md:text-left text-white px-6 md:px-0 max-w-3xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Bine ați venit la<br>Clinicum Center Cluj
+                </h1>
+                <h2 class="text-xl md:text-2xl mb-8">
+                    Asiguram servicii de calitate inca din 2020
+                </h2>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto md:mx-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a href="#contact" class="inline-block bg-web-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-web-dark-blue transition-colors shadow-lg">
+                    Programează-te acum
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows (Desktop Only) -->
+        <button id="prev-btn" class="hidden md:flex absolute left-8 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[rgba(255,255,255,0.8)] hover:bg-[rgba(255,255,255,1)] rounded-full items-center justify-center transition-all shadow-lg z-20">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button id="next-btn" class="hidden md:flex absolute right-8 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[rgba(255,255,255,0.8)] hover:bg-[rgba(255,255,255,1)] rounded-full items-center justify-center transition-all shadow-lg z-20">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Dots Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-white bg-opacity-50 rounded-full transition-all" data-index="0"></button>
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-white bg-opacity-50 rounded-full transition-all" data-index="1"></button>
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-white bg-opacity-50 rounded-full transition-all" data-index="2"></button>
+        </div>
+    </div>
+</section>
+
+<!-- Info Section -->
+<section class="bg-web-white py-16 md:py-24">
+    <div class="max-w-3/4 mx-auto px-3 md:px-8 lg:px-12">
+        <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-20">
+            <!-- Left Side - Content -->
+            <div class="flex-1 text-left w-full">
+                <!-- Above Title -->
+                <p class="text-lg font-bold text-gray-800 mb-2">
+                    Clinicum Center Cluj
+                </p>
+                
+                <!-- Main Title -->
+                <h2 class="text-2xl md:text-4xl text-gray-900 mb-8">
+                    Dermatologie și estetică de calitate!
+                </h2>
+                
+                <!-- Bullet Points in Two Columns -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mb-10 text-left">
+                    <ul class="space-y-3 list-disc list-inside text-base md:text-lg text-gray-700">
+                        <li>Echipă medicală experimentată</li>
+                        <li>Tehnologie medicală modernă</li>
+                        <li>Tratamente personalizate</li>
+                        <li>Consultații detaliate</li>
+                    </ul>
+                    
+                    <ul class="space-y-3 list-disc list-inside text-base md:text-lg text-gray-700">
+                        <li>Rezultate vizibile</li>
+                        <li>Prețuri accesibile</li>
+                        <li>Mediu confortabil și sigur</li>
+                        <li>Program flexibil</li>
+                    </ul>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="flex justify-center md:justify-start">
+                    <a href="#contact" class="inline-block bg-web-blue text-white px-8 py-4 rounded-lg text-lg md:text-xl font-semibold hover:bg-web-dark-blue transition-colors shadow-lg">
+                        Programează-te
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Side - Image -->
+            <div class="flex-1 flex justify-center md:justify-end w-full">
+                <img src="bullet-img.jpg" alt="Clinicum Center Cluj" class="w-full max-w-96 rounded-3xl shadow-xl object-cover">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section class="bg-web-blue/30 py-16 md:py-24">
+    <div class="max-w-3/4 mx-auto px-3 md:px-8 lg:px-12">
+        <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-20">
+            <!-- Left Side - Content -->
+            <div class="flex-1 text-left w-full">
+                <!-- Clinic Name -->
+                <p class="text-lg font-bold text-gray-800 mb-2">
+                    Clinicum Center Cluj
+                </p>
+                
+                <!-- Title -->
+                <h2 class="text-2xl md:text-4xl  text-gray-900 mb-8">
+                    Despre Noi
+                </h2>
+                
+                <!-- Content -->
+                <p class="text-base md:text-lg text-gray-900 mb-8 leading-relaxed">
+                    În prezent, ne continuăm misiunea de a oferi servicii dermatologice și estetice de înaltă calitate. În tratamentele și procedurile pe care le realizăm în clinică, luăm în calcul particularitățile fiecărui pacient, propunând soluții personalizate, adaptate la nevoile și dorințele sale.
+                </p>
+
+                <p class="text-base md:text-lg text-gray-900 mb-10 leading-relaxed">
+                    Vrei să facem cunoștință? Nu ezita să ne faci o vizită! Programează-te!
+                </p>
+                
+                <!-- CTA Button -->
+                <div class="flex justify-center md:justify-start">
+                    <a href="#about" class="inline-block bg-web-blue text-white px-8 py-4 rounded-lg text-lg md:text-xl font-semibold hover:bg-web-dark-blue transition-colors shadow-lg">
+                        Mai multe despre noi
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Side - Image -->
+            <div class="flex-1 flex justify-center md:justify-end w-full">
+                <img src="doctors-img.jpg" alt="Doctors Clinicum Center Cluj" class="w-full max-w-120 max-h-96 rounded-3xl shadow-xl object-cover">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Doctors Section -->
+<section class="bg-web-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-3 md:px-8 lg:px-12">
+        <!-- Section Title -->
+        <h2 class="text-2xl md:text-4xl  text-gray-900 text-center mb-12 md:mb-16">
+            Echipa de top din spatele Clinicii Clinicum
+        </h2>
+        
+        <!-- Carousel Container -->
+        <div class="relative">
+            <!-- Doctors Carousel -->
+            <div class="doctors-carousel overflow-hidden">
+                <div class="doctors-track flex transition-transform duration-500 ease-in-out">
+                    <!-- Doctor Card 1 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-1.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Ana Popescu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Dermatolog</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Specialist în dermatologie estetică cu peste 10 ani de experiență în tratamente.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 2 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-2.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Ion Marinescu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Chirurg Estetician</p>
+                            <p class="text-base text-gray-600  max-w-[75%] mx-auto">Expert în proceduri estetice non-invazive și tratamente laser de ultimă generație.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 3 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-3.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Maria Ionescu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Cosmetolog Medical</p>
+                            <p class="text-base text-gray-600  max-w-[75%] mx-auto">Specializată în tratamente anti-aging și rejuvenare facială cu rezultate remarcabile.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 4 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-4.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Andrei Gheorghe</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Dermatolog</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Specializat în tratarea afecțiunilor dermatologice complexe și proceduri cosmetice avansate.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 5 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-5.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Elena Popa</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Estetician</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Expert în injectabile și conturare facială pentru rezultate naturale și armonioase.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 6 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-6.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Mihai Radu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Dermatolog Pediatric</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Specializat în îngrijirea pielii copiilor și tratamente dermatologice pentru adolescenți.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 7 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-7.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Claudia Stanescu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Specialist Laser</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Expert în tratamente laser pentru cicatrici, pigmentare și rejuvenare completă a pielii.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 8 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-8.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Vlad Constantinescu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Dermatolog Cosmetic</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Specializat în tratamente pentru acnee, rozacee și afecțiuni complexe ale pielii.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 9 -->
+                    <div class="doctor-card flex-shrink-0 w-full md:w-1/3 px-4">
+                        <div class="text-center">
+                            <img src="doctor-9.jpg" alt="Doctor" class="w-3/4 h-80 object-cover rounded-2xl mx-auto mb-4 shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dr. Ioana Munteanu</h3>
+                            <p class="text-blue-700 font-medium text-xl mb-3">Tricolog</p>
+                            <p class="text-base text-gray-600 max-w-[75%] mx-auto">Expert în tratarea problemelor de cădere a părului și afecțiuni ale scalpului.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button id="doctors-prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-web-dark-blue hover:bg-web-blue rounded-full flex items-center justify-center transition-all shadow-lg z-10">
+                <svg class="w-6 h-6 text-web-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="doctors-next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-web-dark-blue hover:bg-web-blue rounded-full flex items-center justify-center transition-all shadow-lg z-10">
+                <svg class="w-6 h-6 text-web-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            
+            <!-- Dots Indicator -->
+            <div class="flex justify-center mt-8 space-x-3">
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="0"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="1"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="2"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="3"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="4"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="5"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="6"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="7"></button>
+                <button class="doctors-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="8"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TODO: aici orar si location-->
+
+<!-- Google Reviews Section -->
+<section class="bg-web-blue/30 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <!-- Section Title -->
+        <h2 class="text-3xl md:text-4xl text-gray-900 text-center mb-4">
+            Ce spun pacienții noștri
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Recenzii Google verificate</p>
+        
+        <!-- Reviews Carousel Container -->
+        <div class="relative p-10">
+            <div class="reviews-carousel overflow-hidden">
+                <div class="reviews-track flex transition-transform duration-500 ease-in-out gap-6">
+                    <!-- Review Card 1 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                A
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Ana Popescu</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Experiență excelentă! Personalul este foarte profesionist și amabil. Rezultatele au depășit așteptările. Recomand cu încredere!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 2 săptămâni</p>
+                    </div>
+                    
+                    <!-- Review Card 2 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                M
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Maria Ionescu</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Cea mai bună clinică din Cluj! Echipament modern, doctori profesioniști și rezultate garantate. Mulțumesc pentru tot!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 1 lună</p>
+                    </div>
+                    
+                    <!-- Review Card 3 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                I
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Ion Marinescu</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Sunt foarte mulțumit de serviciile primite. Personal dedicat, consultații detaliate și tratamente eficiente. Recomand!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 3 săptămâni</p>
+                    </div>
+                    
+                    <!-- Review Card 4 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                E
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Elena Georgescu</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Profesionalism la cel mai înalt nivel! M-am simțit în siguranță pe tot parcursul tratamentului. Mulțumesc echipei!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 1 săptămână</p>
+                    </div>
+                    
+                    <!-- Review Card 5 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                C
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Cristina Popa</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Clinică modernă cu dotări de top. Doctorii sunt extrem de competenți și atenți la detalii. Recomand cu drag!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 2 luni</p>
+                    </div>
+                    
+                    <!-- Review Card 6 -->
+                    <div class="review-card flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                                V
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Vlad Constantinescu</h4>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                    <span class="ml-2 text-sm text-gray-600">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Atmosferă prietenoasă și profesionistă. Tratamentele sunt personalizate și foarte eficiente. Voi reveni cu siguranță!
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">Acum 5 zile</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button id="reviews-prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12  bg-web-dark-blue hover:bg-web-blue  rounded-full flex items-center justify-center transition-all shadow-lg z-10">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="reviews-next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12  bg-web-dark-blue hover:bg-web-blue  rounded-full flex items-center justify-center transition-all shadow-lg z-10">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            
+            <!-- Dots Indicator -->
+            <div class="flex justify-center mt-8 space-x-3">
+                <button class="reviews-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="0"></button>
+                <button class="reviews-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="1"></button>
+                <button class="reviews-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="2"></button>
+                <button class="reviews-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-gray-400 rounded-full transition-all" data-index="3"></button>
+            </div>
+        </div>
+        
+        <!-- Google Link -->
+        <div class="text-center mt-8">
+            <a href="https://www.google.com/search?q=Clinica+Optimum+Zorilor+Reviews" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Vezi toate recenziile pe Google
+            </a>
+        </div>
+    </div>
+</section>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
