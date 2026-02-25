@@ -1,5 +1,13 @@
 import './style.css'
+import './api.ts'
 import { Carousel } from './carousel.ts';
+import { updateNavBar} from './auth';
+
+
+// Check authentication and update navbar when page loads
+document.addEventListener('DOMContentLoaded', async () => {
+  await updateNavBar();
+});
 
 ///MOBILE NAVBAR LOGIC 
 
