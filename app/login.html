@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Clinicum Center Cluj</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <!-- Define Google callback IMMEDIATELY (before modules load) -->
+         
+    <script>
+        ///asta o functionat, era race condition 
+        // This runs synchronously and defines the function ASAP
+        window.handleGoogleSignIn = async function(response) {
+            try {
+                const googleToken = response.credential;
+                
+                const res = await fetch('http://localhost:5005/api/auth/google', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: googleToken })
+                });
+                
+                if (!res.ok) {
+                    const error = await res.json();
+                    throw new Error(error.message);
+                }
+                
+                // Redirect to programari
+                window.location.href = './programari.html';
+                
+            } catch (error) {
+                console.error('Google login error:', error);
+                alert('Google login failed: ' + error.message);
+            }
+        }
+    </script>
 </head>
 <body class="min-h-screen relative">
 
@@ -78,16 +109,23 @@
                 </a>
             </p>
             
-            <!-- Google Sign In Button -->
-            <button class="w-full flex items-center justify-center gap-3 border-2 border-gray-300 rounded-lg px-6 py-3 hover:bg-gray-50 transition-colors mb-6">
-                <svg class="w-6 h-6" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-                <span class="font-semibold text-gray-700">Continuă cu Google</span>
-            </button>
+            <!-- Google Sign-In Button (Official Google Button) -->
+            <div class="flex justify-center mb-6">
+                <div id="g_id_onload"
+                    data-client_id="252892524201-thj8mqhiahg52qoin80fge9ui2t4lu0t.apps.googleusercontent.com"
+                    data-callback="handleGoogleSignIn"
+                    data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin" 
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left"
+                    data-width="380">
+                </div>
+            </div>
             
             <!-- Divider -->
             <div class="flex items-center gap-4 mb-6">
@@ -128,12 +166,6 @@
                     >
                 </div>
                 
-                <!-- Forgot Password Link -->
-                <div class="text-right">
-                    <a href="forgot-password.html" class="text-sm text-blue-600 hover:text-blue-700 transition-colors">
-                        Ai uitat parola?
-                    </a>
-                </div>
                 
                 <!-- Sign In Button -->
                 <button 

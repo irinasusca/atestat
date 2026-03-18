@@ -1,3 +1,4 @@
+import { parse } from "node:path";
 import * as doctorRepo from "../db/doctor.repo.js";
 import * as programareRepo from "../db/programare.repo.js";
 
@@ -22,7 +23,7 @@ export async function get_doctor_by_locatie(locatie) {
 }
 
 export async function get_doctor_by_id(id_doctor) {
-    const doctor = await doctorRepo.findByIdDoctor(id_doctor);
+    const doctor = await doctorRepo.findByDoctorId(id_doctor);
     if(!doctor) throw new Error("No doctor found for this id");
     return doctor;
 }
@@ -35,38 +36,26 @@ export async function get_programari_by_doctor(id_doctor) {
 
 ///Partea cu intervale de lucru disponibile
 
-//Dintr-un ora_start si ora_end genereaza array intervale de cate o ora
-///Ulterior le comparam cu programarile deja existente si afisam doar cele disponibile
+export async function get_available_slots(id_doctor, zi_saptamana, data_programare) {
 
-export async function get_available_slots(id_doctor, zi_saptamana) {
-  const intervals = await doctorRepo.getDoctorIntervals(
-    id_doctor,
-    zi_saptamana
+  ///Data calendar e de forma 2026.03.01
+  ///folosim getDoctorSlotsByDay din db care se ocupa singura de filtrare
+  const slots = await doctorRepo.getDoctorSlotsByDay(id_doctor, zi_saptamana, data_programare);
+
+  return slots.map(slot => 
+    `${slot.ora_start.slice(0,5)}-${slot.ora_end.slice(0,5)}`
   );
 
-  const slots = [];
+  ///Returneaza frumos doar intervale gen 09:00-10:00 
+  
+}
 
-  for (const interval of intervals) {
-    let start = new Date(`1970-01-01T${interval.ora_start}`);
-    const end = new Date(`1970-01-01T${interval.ora_end}`);
+///filtrarea de doctori care se va apela in programare.
 
-    while (start < end) {
-      const next = new Date(start);
-      next.setHours(start.getHours() + 1);
-
-      if (next <= end) {
-        slots.push(
-          `${start.toTimeString().slice(0,5)}-${next
-            .toTimeString()
-            .slice(0,5)}`
-        );
-      }
-
-      start = next;
-    }
-  }
-
-  return slots;
+export async function find_doctors_by_filters(locatii, specializari) {
+    const doctors = await doctorRepo.findByFilters(locatii, specializari);
+    if(!doctors) throw new Error("No doctors found for these filters");
+    return doctors;
 }
 
 ///Acum modificarea orarului personal al doctorului, adica modificarea intervalelor de lucru
@@ -75,8 +64,34 @@ export async function get_available_slots(id_doctor, zi_saptamana) {
 ///Cand doctorul adauga un interval nou pentru o zi, stergem din doctor_program intervalele existente din ziua respectiva
 ///Adaugam in locul lor pe cele noi, iar apoi stergem programarile care nu mai respecta noul interval
 
-export async function update_doctor_program(id_doctor, zi_saptamana, ora_start, ora_end) {
-    await doctorRepo.updateProgramDoctor(id_doctor, zi_saptamana);
-    await doctorRepo.addProgramDoctor(id_doctor, zi_saptamana, ora_start, ora_end);
+export async function get_doctor_program(id_doctor) {
+  const program = await doctorRepo.findProgramByDoctorId(id_doctor);
+  return program;
+}
+
+export async function update_doctor_program(id_doctor, zi_saptamana, ore_noi) {
+    await doctorRepo.updateProgramDoctor(id_doctor, zi_saptamana); ///Sterge intervalele existente din ziua respectiva
+    ///loop prin array-ul de intervale noi si adauga in doctor_program
+    for(const ora_start of ore_noi) {
+
+        // Ora fixa
+        if (!/^\d{2}:00$/.test(ora_start)) {
+            throw new Error("Ora trebuie sa fie fixa (ex: 08:00, 14:00)");
+        }
+
+        if (ora_start < "08:00" || ora_start > "18:00") {
+        throw new Error("Ora trebuie sa fie intre 08:00 si 18:00");
+        }
+        ///Constraints pentru ore exista deja in baza de date, dar e bine sa avem si aici.
+
+        ///Calcula ora_end sa fie exact o ora dupa ora_start.
+        const ora_end = new Date(`1970-01-01T${ora_start}`);
+        ora_end.setHours(ora_end.getHours() + 1);
+
+        const formatted_end = ora_end.toTimeString().slice(0, 5);
+
+        await doctorRepo.addProgramDoctor(id_doctor, zi_saptamana, ora_start, formatted_end);
+    }
+    
     await programareRepo.deleteInvalidForDay(id_doctor, zi_saptamana);
 }

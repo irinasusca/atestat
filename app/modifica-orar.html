@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orarul Meu - Clinicum Center Cluj</title>
+  </head>
+  <body>
+    <!-- Nav bar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="./index.html" class="flex items-center">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center justify-center flex-1 mx-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="text-gray-700 hover:text-blue-700 transition-colors">Home</a>
+                        <a href="./about.html" class="text-gray-700 hover:text-blue-700 transition-colors">Despre noi</a>
+                        <a href="./services.html" class="text-gray-700 hover:text-blue-700 transition-colors">Servicii</a>
+                        <a href="./index.html#locations" class="text-gray-700 hover:text-blue-700 transition-colors">Locatii</a>
+                        <a href="./doctors.html" class="text-gray-700 hover:text-blue-700 transition-colors">Doctori</a>
+                        <a href="./pricing.html" class="text-gray-700 hover:text-blue-700 transition-colors">Tarife</a>
+                    </div>
+                </div>
+
+                <!-- Desktop Login/Programări/Logout -->
+                <div class="hidden md:flex items-center gap-3" id="desktop-auth">
+                    <a href="./login.html" class="bg-web-dark-blue text-web-white px-6 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                    <button id="logout-btn" class="hidden bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2">
+                        <img src="more.png" alt="Menu" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-3">
+                <a href="./index.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Home</a>
+                <a href="./about.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Despre noi</a>
+                <a href="./services.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Servicii</a>
+                <a href="./index.html#locations" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Locatii</a>
+                <a href="./doctors.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Doctori</a>
+                <a href="./pricing.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Tarife</a>
+                <a href="./login.html" class="block bg-web-dark-blue text-web-white text-center px-3 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                <button id="logout-btn-mobile" class="hidden w-full bg-red-600 text-white text-center px-3 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 min-h-screen bg-gray-50">
+        <div class="max-w-7xl md:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-8 md:mt-10">
+            <!-- Title -->
+            <div class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Orarul Meu</h1>
+                <p class="text-gray-600 text-lg">Gestionează programul tău săptămânal de consultații</p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <p class="mt-4 text-gray-600">Se încarcă orarul...</p>
+            </div>
+
+            <!-- Schedule Table -->
+            <div id="schedule-container" class="hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-x-auto">
+                    <table class="w-full min-w-[700px]">
+                        <thead>
+                            <tr class="bg-gray-100 border-b">
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Luni</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Marți</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Miercuri</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Joi</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Vineri</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Sâmbătă</th>
+                                <th class="px-4 py-3 text-center text-sm font-semibold text-gray-700">Duminică</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-body">
+                            <!-- Schedule rows will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Instructions -->
+                <div class="mt-6 text-center ">
+                    <p class="text-gray-700 mb-4 md:text-lg">
+                        Selectează toate intervalele care se aplică pentru fiecare zi, apoi apasă butonul de confirmare.
+                    </p>
+                    
+                    <!-- Confirm Button -->
+                    <button id="confirm-btn" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg md:text-xl">
+                        Confirmă modificările →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/modifica-orar.ts"></script>
+  </body>
+</html>

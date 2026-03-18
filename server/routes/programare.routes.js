@@ -1,9 +1,23 @@
 import { Router } from "express";
-import {} from "../controllers/programare.controller.js";
+import {getPacientProgramari, getDoctorProgramari, getAvailableProgramari, getProgramareById, createProgramare, deleteProgramare} from "../controllers/programare.controller.js";
+import {authenticateUser} from "../middlewares/auth.middleware.js";
+
 
 const programareRoutes = Router();
 
-programareRoutes.get("/get_programari", get_programari);
-programareRoutes.post("/create_programare", create_programare);
+///Absolut toate actiunile necesita verify
+programareRoutes.use(authenticateUser);
+
+programareRoutes.post('/available', getAvailableProgramari);
+
+programareRoutes.get('/pacient/:id', getPacientProgramari);
+
+programareRoutes.get('/doctor/:id', getDoctorProgramari);
+
+programareRoutes.post('/', createProgramare);
+
+programareRoutes.get('/:id', getProgramareById);
+
+programareRoutes.delete('/:id', deleteProgramare);
 
 export default programareRoutes;

@@ -1,15 +1,17 @@
 import { Router } from "express";
-import {login, register, logout, verify} from "../controllers/doctor.controller.js";
-import { validateRegister } from "../middlewares/validateRegister.js";
-
-///
+import { requireRole, authenticateUser } from "../middlewares/auth.middleware.js";
+import { udpateDoctorOrar, getDoctorOrar} from "../controllers/doctor.controller.js";
 
 const doctorRoutes = Router();
 
-doctorRoutes.post("/login", login);
+///toate actiunile necesita verify
+///si require role doctor
+doctorRoutes.use(authenticateUser, requireRole("doctor"));
 
-doctorRoutes.post("/register", validateRegister, register);
+///get oorar
+doctorRoutes.get('/orar/:id_doctor', getDoctorOrar);
 
-
+///update orar cu put fiindca dacem update/delete
+doctorRoutes.put('/orar', udpateDoctorOrar);
 
 export default doctorRoutes;

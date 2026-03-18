@@ -16,7 +16,7 @@ export async function login(req, res, next) {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "strict",
-            maxAge: 3600000 // 1 hour
+            maxAge: 3600000*3 // 1 hour *3
         });
 
         res.status(200).json({token, user});
@@ -72,8 +72,9 @@ export async function verify(req, res, next) {
 export async function logout(req, res, next) {
     try {
         res.cookie('token', 'none', {
-            expires: new Date(Date.now() + 10000), 
             httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
         });
 
         res.status(200).json({message: "Logged out successfully"});

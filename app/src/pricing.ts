@@ -2,38 +2,6 @@
 
 import './style.css'
 
-///MOBILE NAVBAR LOGIC 
-
-const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
-const mobileMenu = document.getElementById('mobile-menu') as HTMLDivElement | null;
-
-// Check if elements exist before adding event listeners
-if (mobileMenuButton && mobileMenu) {
-    // Toggle mobile menu
-    mobileMenuButton.addEventListener('click', (): void => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e: MouseEvent): void => {
-        const target = e.target as Node;
-        if (!mobileMenuButton.contains(target) && !mobileMenu.contains(target)) {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-
-    // Close mobile menu when clicking a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach((link: Element): void => {
-        link.addEventListener('click', (): void => {
-            mobileMenu.classList.add('hidden');
-        });
-    });
-} else {
-    console.error('Mobile menu elements not found');
-}
-
-
 
 
 // pricing.ts

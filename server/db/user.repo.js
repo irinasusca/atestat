@@ -18,6 +18,16 @@ export async function createUser(username, parola, rol, prenume, nume, email) {
     return rows[0];
 }
 
+///Pentru Google user nu avem parola, si specificam provider google ca sa ne lase cu parola NULL.
+
+export async function createGoogleUser(username, rol, prenume, nume, email) {
+    const {rows} = await pool.query(
+        "INSERT INTO utilizator (username, rol, prenume, nume, email, provider, parola) VALUES ($1, $2, $3, $4, $5, 'google', NULL) RETURNING *",
+        [username, rol, prenume, nume, email]
+    );
+    return rows[0];
+}
+
 ///Find dupa niste chestii
 
 export async function findById(id_utilizator) {

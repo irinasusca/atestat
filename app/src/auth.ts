@@ -1,3 +1,10 @@
+// Add this at the top (pt google sign in)
+declare global {
+    interface Window {
+        handleGoogleSignIn: (response: any) => void;
+    }
+}
+
 interface User {
     id_utilizator: number;
     username: string;
@@ -73,14 +80,18 @@ export async function updateNavBar(): Promise<void> {
   
   if (user) {
     // User is authenticated - change to "Programări" button
+    // redirect based on role; admin la admin, user la programari
+    const destination = user.rol === 'admin' ? './admin.html' : './programari.html';
+    const buttonText = user.rol === 'admin' ? 'Admin Panel' : 'Programări'
+
     if (desktopLoginBtn) {
-      desktopLoginBtn.href = './programari.html';
-      desktopLoginBtn.textContent = 'Programări';
+      desktopLoginBtn.href = destination;
+      desktopLoginBtn.textContent = buttonText;
     }
     
     if (mobileLoginBtn) {
-      mobileLoginBtn.href = './programari.html';
-      mobileLoginBtn.textContent = 'Programări';
+      mobileLoginBtn.href = destination;
+      mobileLoginBtn.textContent = buttonText;
     }
 
 // Show logout buttons
@@ -158,3 +169,4 @@ export async function requireAuth(): Promise<User> {
   
   return user;
 }
+
