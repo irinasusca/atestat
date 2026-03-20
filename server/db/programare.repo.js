@@ -126,10 +126,10 @@ export async function deleteInvalidForDay(id_doctor, zi_saptamana) {
 }
 
 ///A patient shouldn't be able to book more than 4 upcoming appointments, to prevent abuse
-
+///NOW() in bucharest, pt DB server neon
 export async function countUpcomingProgramariByPacient(id_pacient) {
     const {rows} = await pool.query(
-        "SELECT COUNT(*) FROM programare WHERE id_pacient_programare = $1 AND data_programare > NOW()",
+        "SELECT COUNT(*) FROM programare WHERE id_pacient_programare = $1 AND data_programare > (NOW() AT TIME ZONE 'Europe/Bucharest')",
         [id_pacient]
     );
     return parseInt(rows[0].count);

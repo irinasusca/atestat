@@ -110,7 +110,7 @@ export async function findDoctorsWithAvailableSlots(
         ON dp.id_doctor = d.id_doctor
     WHERE dp.zi_saptamana = $${index}
       ${filters}
-      AND ($${index + 1}::date + dp.ora_start) > NOW()
+      AND ($${index + 1}::date + dp.ora_start) > (NOW() AT TIME ZONE 'Europe/Bucharest')
       AND NOT EXISTS (
         SELECT 1
         FROM programare p
@@ -180,6 +180,8 @@ export async function getDoctorIntervals(id_doctor, zi_saptamana) {
 
 ///Gasim available slots pentru un doctor intr-o zi anume. Adica interactionam si cu programare table.
 /// IMPORTANT - NU LASA PROGRAMARI CARE SUNT INAINTE DE CURRENT
+
+/// a trebuit sa schimbam in (NOW() AT TIME ZONE 'Europe/Bucharest') pt DB prod
 export async function getDoctorSlotsByDay(
   id_doctor,
   zi_saptamana,
@@ -191,7 +193,7 @@ export async function getDoctorSlotsByDay(
     FROM doctor_program dp
     WHERE dp.id_doctor = $1
       AND dp.zi_saptamana = $2
-      AND($3::date + dp.ora_start) > NOW()
+      AND($3::date + dp.ora_start) > (NOW() AT TIME ZONE 'Europe/Bucharest')
       AND NOT EXISTS (
         SELECT 1
         FROM programare p

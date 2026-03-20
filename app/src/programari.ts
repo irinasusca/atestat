@@ -203,7 +203,7 @@ function createCardProgramarePacient(programare: any): string {
     const imageName = `${programare.doctor_prenume}_${programare.doctor_nume}.jpg`.toLowerCase();
 
     return `
-        <div class="bg-web-blue/20 rounded-2xl shadow-lg p-6 relative">
+        <div class="bg-gray-50 rounded-2xl shadow-lg p-6 relative">
             ${cancelButton}
             
             <div class="flex items-center gap-4 mb-6">
@@ -249,7 +249,7 @@ function createCardProgramareDoctor(programare: any): string {
 
 
     return `
-        <div class="bg-web-blue/20 rounded-2xl shadow-lg p-6 relative">
+        <div class="bg-gray-50 rounded-2xl shadow-lg p-6 relative">
             
             <div class="flex items-center gap-4 mb-6">
                 <div class="w-16 h-16 rounded-full bg-web-dark-blue flex-shrink-0"></div>

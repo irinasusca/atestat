@@ -191,7 +191,7 @@ function createDoctorCard(doctor: any): string {
     ///fetchuim poza
     const imageName = `${doctor.doctor_prenume}_${doctor.doctor_nume}.jpg`.toLowerCase();
     return `
-        <div class="bg-gray-200 rounded-2xl p-6">
+        <div class="bg-gray-50 rounded-2xl p-6">
             <div class="flex items-center gap-4 mb-6">
                 <img src="/doctors/${imageName}" 
                      alt="Dr. ${doctor.doctor_nume} ${doctor.doctor_prenume}" 

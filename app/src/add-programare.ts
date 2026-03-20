@@ -3,24 +3,20 @@ import { updateNavBar, requireAuth } from './auth';
 
 // Available options (you can modify these arrays later)
 const SPECIALITATI = [
-    'Cardiologie',
-    'Dermatologie',
-    'Endocrinologie',
-    'Gastroenterologie',
-    'Neurologie',
-    'Oftalmologie',
-    'ORL',
-    'Ortopedie',
-    'Pediatrie',
-    'Psihiatrie',
-    'Reumatologie',
-    'Urologie'
+  'Dermatologie generala',
+  'Dermatologie pediatrica',
+  'Acnee',
+  'Dermato-oncologie',
+  'Dermatologie estetica',
+  'Dermatologie alergologica',
+  'Dermatologie infectioasa',
+  'Tricologie',
+  'Dermatologie chirurgicala'
 ];
 
 const LOCATII = [
     'Cluj Zorilor',
-    'Cluj Mărăști',
-    'Cluj Mănăștur',
+    'Cluj Marasti',
     'Cluj Gheorgheni'
 ];
 
