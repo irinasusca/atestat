@@ -21,6 +21,7 @@ export default defineConfig({
         'sample-service': './sample-service.html',
         'modifica-orar': './modifica-orar.html',
         'add-programare': './add-programare.html',
+        'view-available': './view-available.html',
         admin: './admin.html',
         doctors: './doctors.html',
         pricing: './pricing.html',
