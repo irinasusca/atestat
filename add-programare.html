@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/atestat/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programează-te - Clinicum Center Cluj</title>
+    <script type="module" crossorigin src="/atestat/assets/add-programare-YdL5P40W.js"></script>
+    <link rel="modulepreload" crossorigin href="/atestat/assets/auth-DKx7HzCU.js">
+    <link rel="modulepreload" crossorigin href="/atestat/assets/main-DBG-no5V.js">
+    <link rel="stylesheet" crossorigin href="/atestat/assets/auth-D89Ljx6_.css">
+  </head>
+  <body>
+    <!-- Nav bar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="./index.html" class="flex items-center">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center justify-center flex-1 mx-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="text-gray-700 hover:text-blue-700 transition-colors">Home</a>
+                        <a href="./about.html" class="text-gray-700 hover:text-blue-700 transition-colors">Despre noi</a>
+                        <a href="./services.html" class="text-gray-700 hover:text-blue-700 transition-colors">Servicii</a>
+                        <a href="./index.html#locations" class="text-gray-700 hover:text-blue-700 transition-colors">Locatii</a>
+                        <a href="./doctors.html" class="text-gray-700 hover:text-blue-700 transition-colors">Doctori</a>
+                        <a href="./pricing.html" class="text-gray-700 hover:text-blue-700 transition-colors">Tarife</a>
+                    </div>
+                </div>
+
+                <!-- Desktop Login/Programări/Logout -->
+                <div class="hidden md:flex items-center gap-3" id="desktop-auth">
+                    <a href="./login.html" class="bg-web-dark-blue text-web-white px-6 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                    <button id="logout-btn" class="hidden bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2">
+                        <img src="more.png" alt="Menu" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-3">
+                <a href="./index.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Home</a>
+                <a href="./about.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Despre noi</a>
+                <a href="./services.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Servicii</a>
+                <a href="./index.html#locations" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Locatii</a>
+                <a href="./doctors.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Doctori</a>
+                <a href="./pricing.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Tarife</a>
+                <a href="./login.html" class="block bg-web-dark-blue text-web-white text-center px-3 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                <button id="logout-btn-mobile" class="hidden w-full bg-red-600 text-white text-center px-3 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 min-h-screen bg-gray-50 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:mt-12">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Left Side - Filters -->
+                <div class="w-full md:w-1/2 space-y-6">
+                    <!-- Title -->
+                    <div class="mb-8">
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Programează-te</h1>
+                        <p class="text-gray-600 text-lg">Selectează de mai jos detaliile pentru a găsi disponibilitatea doctorilor noștri</p>
+                    </div>
+
+                    <!-- Specialitate Filter -->
+                    <div class="bg-web-grey rounded-lg p-6 cursor-pointer hover:bg-gray-300 transition-colors mb-6" id="specialitate-filter">
+                        <p class="text-sm italic text-gray-600 mb-3">Alege specialitatea</p>
+                        <div id="specialitate-selected" class="flex flex-wrap gap-2 min-h-[32px] items-start">
+                            <span class="text-gray-700 font-medium">Toate specialitățile</span>
+                        </div>
+                    </div>
+
+                    <!-- Locatie Filter -->
+                    <div class="bg-web-grey rounded-lg p-6 cursor-pointer hover:bg-gray-300 transition-colors mb-6 " id="locatie-filter">
+                        <p class="text-sm italic text-gray-600 mb-3">Alege locația</p>
+                        <div id="locatie-selected" class="flex flex-wrap gap-2 min-h-[32px] items-start">
+                            <span class="text-gray-700 font-medium">Toate locațiile</span>
+                        </div>
+                    </div>
+
+                    <!-- Verify Button -->
+                    <button id="verify-btn" class="shadow-md w-full bg-blue-700 text-white px-6 py-4 rounded-lg hover:bg-blue-800 transition-colors font-semibold text-lg">
+                        Verifică disponibilitatea →
+                    </button>
+                </div>
+
+                <!-- Right Side - Selection Menu (Desktop) -->
+                <div id="selection-menu-desktop" class="hidden md:block w-full md:w-1/2 bg-white rounded-lg shadow-lg p-6 sticky top-24 self-start max-h-[80vh] overflow-y-auto">
+                    <h2 id="selection-title" class="text-2xl font-bold text-gray-900 mb-4">Alege specialitatea</h2>
+                    
+                    <!-- Search Bar -->
+                    <input 
+                        type="text" 
+                        id="search-input-desktop" 
+                        placeholder="Caută specialitatea..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+
+                    <!-- Options List -->
+                    <div id="options-list-desktop" class="space-y-2">
+                        <!-- Options will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Mobile Popup Menu -->
+                <div id="selection-menu-mobile" class="fixed inset-0 bg-web-grey z-50 hidden flex items-center justify- p-4">
+                    <div class="bg-white rounded-2xl p-6 max-h-[80vh] w-full max-w-md overflow-y-auto relative">
+                        <!-- Close Button -->
+                        <button id="close-mobile-menu" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+
+                        <h2 id="selection-title-mobile" class="text-2xl font-bold text-gray-900 mb-4">Alege specialitatea</h2>
+                        
+                        <!-- Search Bar -->
+                        <input 
+                            type="text" 
+                            id="search-input-mobile" 
+                            placeholder="Caută specialitatea..."
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+
+                        <!-- Options List -->
+                        <div id="options-list-mobile" class="space-y-2">
+                            <!-- Options will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+  </body>
+</html>

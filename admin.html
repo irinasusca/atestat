@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Clinicum Center Cluj</title>
+  <script type="module" crossorigin src="/atestat/assets/admin-BeFDCNBg.js"></script>
+  <link rel="modulepreload" crossorigin href="/atestat/assets/auth-DKx7HzCU.js">
+  <link rel="modulepreload" crossorigin href="/atestat/assets/main-DBG-no5V.js">
+  <link rel="stylesheet" crossorigin href="/atestat/assets/auth-D89Ljx6_.css">
+</head>
+<body class="min-h-screen bg-web-blue/20">
+
+   <!-- Fixed Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center justify-center flex-1 mx-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="text-gray-700 hover:text-blue-700 transition-colors">Home</a>
+                        <a href="./about.html" class="text-gray-700 hover:text-blue-700 transition-colors">Despre noi</a>
+                        <a href="./services.html" class="text-gray-700 hover:text-blue-700 transition-colors">Servicii</a>
+                        <a href="./index.html#locations" class="text-gray-700 hover:text-blue-700 transition-colors">Locatii</a>
+                        <a href="./doctors.html" class="text-gray-700 hover:text-blue-700 transition-colors">Doctori</a>
+                        <a href="./pricing.html" class="text-gray-700 hover:text-blue-700 transition-colors">Tarife</a>
+                    </div>
+                </div>
+
+                <!-- Desktop Login/Programări/Logout -->
+            <div class="hidden md:flex items-center gap-3" id="desktop-auth">
+                <a href="./login.html" class="bg-web-dark-blue text-web-white px-6 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                <button id="logout-btn" class="hidden bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+            </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2">
+                        <img src="more.png" alt="Menu" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-3">
+                <a href="./index.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Home</a>
+                <a href="./about.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Despre noi</a>
+                <a href="./services.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Servicii</a>
+                <a href="./index.html#locations" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Locatii</a>
+                <a href="./doctors.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Doctori</a>
+                <a href="./pricing.html" class="block text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md transition-colors">Tarife</a>
+                <a href="./login.html" class="block bg-web-dark-blue text-web-white text-center px-3 py-2 rounded-lg hover:bg-web-blue transition-colors">Login</a>
+                <button id="logout-btn-mobile" class="hidden w-full bg-red-600 text-white text-center px-3 py-2 rounded-lg hover:bg-red-700 transition-colors">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 px-4 pb-12">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900">Admin Panel</h1>
+                <p class="text-gray-600 mt-2">Gestionare utilizatori și roluri</p>
+            </div>
+
+            <!-- Forms Container -->
+            <div class="flex flex-col lg:flex-row gap-8">
+                
+                <!-- Left Side - Promote to Doctor -->
+                <div class="flex-1">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Promovează la rol de Doctor</h2>
+                        
+                        <form id="promote-doctor-form" class="space-y-5">
+                            <div>
+                                <label for="doctor-email" class="block text-gray-700 font-semibold mb-2">
+                                    Email
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="doctor-email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+                                    placeholder="doctor@exemplu.com"
+                                >
+                            </div>
+
+                            <div>
+                                <label for="specializare" class="block text-gray-700 font-semibold mb-2">
+                                    Specializare
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="specializare" 
+                                    name="specializare"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+                                    placeholder="Cardiologie"
+                                >
+                            </div>
+
+                            <div>
+                                <label for="cod-parafa" class="block text-gray-700 font-semibold mb-2">
+                                    Cod Parafă
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="cod-parafa" 
+                                    name="cod_parafa"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+                                    placeholder="12345"
+                                >
+                            </div>
+
+                            <div>
+                                <label for="locatie" class="block text-gray-700 font-semibold mb-2">
+                                    Locație
+                                </label>
+                                <select 
+                                    id="locatie" 
+                                    name="locatie"
+                                    required
+                                    class="w-full px-4 py-3 pr-10 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors appearance-none bg-white"
+                                    style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.5em 1.5em;"
+                                >
+                                    <option value="">Selectează locația</option>
+                                    <option value="Cluj Zorilor">Cluj Zorilor</option>
+                                    <option value="Cluj Gheorgheni">Cluj Gheorgheni</option>
+                                    <option value="Cluj Marasti">Cluj Marasti</option>
+                                </select>
+                            </div>
+
+                            <button 
+                                type="submit"
+                                class="w-full bg-blue-600 text-white font-semibold py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-lg mt-6 flex items-center justify-center gap-2"
+                            >
+                                <span>Promovează</span>
+                                <span>→</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Side - Promote to Admin & Delete User -->
+                <div class="flex-1 flex flex-col gap-8">
+                    
+                    <!-- Promote to Admin -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Promovează la rol de Admin</h2>
+                        
+                        <form id="promote-admin-form" class="space-y-5">
+                            <div>
+                                <label for="admin-email" class="block text-gray-700 font-semibold mb-2">
+                                    Email
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="admin-email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition-colors"
+                                    placeholder="admin@exemplu.com"
+                                >
+                            </div>
+
+                            <button 
+                                type="submit"
+                                class="w-full bg-green-600 text-white font-semibold py-4 rounded-lg hover:bg-green-700 transition-colors shadow-lg flex items-center justify-center gap-2"
+                            >
+                                <span>Promovează</span>
+                                <span>→</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Delete User -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Șterge utilizator</h2>
+                        
+                        <form id="delete-user-form" class="space-y-5">
+                            <div>
+                                <label for="delete-email" class="block text-gray-700 font-semibold mb-2">
+                                    Email
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="delete-email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-red-600 transition-colors"
+                                    placeholder="utilizator@exemplu.com"
+                                >
+                            </div>
+
+                            <button 
+                                type="submit"
+                                class="w-full bg-red-600 text-white font-semibold py-4 rounded-lg hover:bg-red-700 transition-colors shadow-lg flex items-center justify-center gap-2"
+                            >
+                                <span>Șterge</span>
+                                <span>→</span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
