@@ -1,3 +1,4 @@
+console.log('🚨 PROGRAMARI.TS LOADED 🚨');
 import './style.css';
 import { updateNavBar, requireAuth, API_URL } from './auth';
 
@@ -7,7 +8,7 @@ let toateProgramarile: any[] = [];
 let currentUser: any = null;
 
 // Check authentication and update navbar when page loads
-(async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   try {
     console.log('1. Starting DOMContentLoaded'); // DEBUG
     currentUser = await requireAuth(); // Redirect to login if not authenticated
@@ -24,7 +25,7 @@ let currentUser: any = null;
   } catch (error) {
     console.error('ERROR in DOMContentLoaded:', error);
   }
-})();
+});
 
 // Setup event listeners
 function setupEventListeners(): void {
