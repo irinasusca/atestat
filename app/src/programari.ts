@@ -1,4 +1,3 @@
-console.log('🚨 PROGRAMARI.TS LOADED 🚨');
 import './style.css';
 import { updateNavBar, requireAuth, API_URL } from './auth';
 
