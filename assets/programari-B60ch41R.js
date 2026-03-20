@@ -7,7 +7,7 @@ import{r as p,u as f,A as l}from"./auth-DKx7HzCU.js";import"./main-DcFxAdWB.js";
             ${i}
             
             <div class="flex items-center gap-4 mb-6">
-                <img src="/doctors/${s}" 
+                <img src="./doctors/${s}" 
                      alt="Dr. ${t.doctor_nume} ${t.doctor_prenume}" 
                      class="w-16 h-16 rounded-full object-cover flex-shrink-0"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
