@@ -207,7 +207,7 @@ function createCardProgramarePacient(programare: any): string {
             ${cancelButton}
             
             <div class="flex items-center gap-4 mb-6">
-                <img src="/doctors/${imageName}" 
+                <img src="./doctors/${imageName}" 
                      alt="Dr. ${programare.doctor_nume} ${programare.doctor_prenume}" 
                      class="w-16 h-16 rounded-full object-cover flex-shrink-0"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
