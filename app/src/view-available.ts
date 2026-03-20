@@ -6,7 +6,6 @@ let selectedSpecialitati: string[] = [];
 let selectedLocatii: string[] = [];
 let selectedDate: Date = new Date();
 let availableDoctors: any[] = [];
-let currentUser: any = null;
 let selectedSlot: any = null;
 
 // Romanian month names
@@ -16,7 +15,7 @@ const DAYS_RO = ['Duminică', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'S�
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
-    currentUser = await requireAuth();
+    await requireAuth();
     await updateNavBar();
     
     // Load filters from sessionStorage

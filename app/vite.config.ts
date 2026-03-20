@@ -16,7 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        about: '.about.html',
+        about: './about.html',
         services: './services.html',
         'sample-service': './sample-service.html',
         'modifica-orar': './modifica-orar.html',
