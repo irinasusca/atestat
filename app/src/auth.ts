@@ -17,7 +17,7 @@ interface VerifyResponse {
     user: User;
 }
 
-export const API_URL = 'http://localhost:5005';
+export const API_URL = 'https://atestat.onrender.com';
 
 export async function verifyAuth(): Promise<User | null> {
   try {

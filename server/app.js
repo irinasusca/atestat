@@ -6,7 +6,10 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: [ 
+        "http://localhost:5173",
+        "https://irinasusca.github.io/atestat" 
+    ],
     optionsSuccessStatus: 200,
     credentials: true
 };

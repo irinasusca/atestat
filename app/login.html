@@ -14,7 +14,7 @@
             try {
                 const googleToken = response.credential;
                 
-                const res = await fetch('http://localhost:5005/api/auth/google', {
+                const res = await fetch('https://atestat.onrender.com/api/auth/google', {
                     method: 'POST',
                     credentials: 'include',
                     headers: { 'Content-Type': 'application/json' },
