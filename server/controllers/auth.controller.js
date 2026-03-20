@@ -14,8 +14,8 @@ export async function login(req, res, next) {
         ///Acum trimitem pe Cookie la client!
         res.cookie("token", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            secure: true,
+            sameSite: "none",
             maxAge: 3600000*3 // 1 hour *3
         });
 
@@ -73,8 +73,8 @@ export async function logout(req, res, next) {
     try {
         res.cookie('token', 'none', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            secure: true,
+            sameSite: 'none'
         });
 
         res.status(200).json({message: "Logged out successfully"});
