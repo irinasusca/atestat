@@ -192,7 +192,7 @@ function createDoctorCard(doctor: any): string {
     return `
         <div class="bg-gray-50 rounded-2xl p-6">
             <div class="flex items-center gap-4 mb-6">
-                <img src="/doctors/${imageName}" 
+                <img src="./doctors/${imageName}" 
                      alt="Dr. ${doctor.doctor_nume} ${doctor.doctor_prenume}" 
                      class="w-16 h-16 rounded-full object-cover flex-shrink-0"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -244,8 +244,8 @@ function openConfirmationPopup(slotInfo: any): void {
     const imageName = `${slotInfo.doctorPrenume}_${slotInfo.doctorNume}.jpg`.toLowerCase();
     const imageEl = document.getElementById('confirm-doctor-image') as HTMLImageElement;
     if (imageEl) {
-        imageEl.src = `/doctors/${imageName}`;
-        console.log('Setting image to:', `/doctors/${imageName}`);
+        imageEl.src = `./doctors/${imageName}`;
+        console.log('Setting image to:', `./doctors/${imageName}`);
     }
     
     const day = selectedDate.getDate();
