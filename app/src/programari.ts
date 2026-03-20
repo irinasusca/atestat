@@ -7,7 +7,7 @@ let toateProgramarile: any[] = [];
 let currentUser: any = null;
 
 // Check authentication and update navbar when page loads
-document.addEventListener('DOMContentLoaded', async () => {
+(async () => {
   try {
     console.log('1. Starting DOMContentLoaded'); // DEBUG
     currentUser = await requireAuth(); // Redirect to login if not authenticated
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (error) {
     console.error('ERROR in DOMContentLoaded:', error);
   }
-});
+})();
 
 // Setup event listeners
 function setupEventListeners(): void {
