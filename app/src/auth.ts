@@ -124,6 +124,34 @@ export async function updateNavBar(): Promise<void> {
   }
 
   setupLogoutHandlers(desktopLogoutBtn, mobileLogoutBtn);
+  setupMobileMenu();
+}
+
+/**
+ * Setup mobile menu toggle behavior, now inlcuding this in the normal updateNavBar to be used/imported in all the other files
+ */
+function setupMobileMenu(): void {
+  const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
+  const mobileMenu = document.getElementById('mobile-menu') as HTMLDivElement | null;
+
+  if (!mobileMenuButton || !mobileMenu) return;
+
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (e: MouseEvent) => {
+    const target = e.target as Node;
+    if (!mobileMenuButton.contains(target) && !mobileMenu.contains(target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
 }
 
 /**

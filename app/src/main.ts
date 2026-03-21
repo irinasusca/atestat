@@ -4,41 +4,11 @@ import { Carousel } from './carousel.ts';
 import { updateNavBar} from './auth';
 
 
-// Check authentication and update navbar when page loads
+// Check authentication and update navbar (also mobile navbar) when page loads
 document.addEventListener('DOMContentLoaded', async () => {
   await updateNavBar();
 });
 
-///MOBILE NAVBAR LOGIC 
-
-const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
-const mobileMenu = document.getElementById('mobile-menu') as HTMLDivElement | null;
-
-// Check if elements exist before adding event listeners
-if (mobileMenuButton && mobileMenu) {
-    // Toggle mobile menu
-    mobileMenuButton.addEventListener('click', (): void => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e: MouseEvent): void => {
-        const target = e.target as Node;
-        if (!mobileMenuButton.contains(target) && !mobileMenu.contains(target)) {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-
-    // Close mobile menu when clicking a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach((link: Element): void => {
-        link.addEventListener('click', (): void => {
-            mobileMenu.classList.add('hidden');
-        });
-    });
-} else {
-    console.error('Mobile menu elements not found');
-}
 
 // carousel logic
 ///instantiate carousels; hero is a fade carousel different logic

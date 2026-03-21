@@ -1,7 +1,7 @@
 ///mobile menu, maybe move to separate file later
 
 import './style.css'
-
+import { updateNavBar } from './auth';
 
 
 // pricing.ts
@@ -44,7 +44,9 @@ toggleButtons.forEach((button: HTMLButtonElement) => {
 });
 
 // Initialize: First category open, others closed
-document.addEventListener('DOMContentLoaded', (): void => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await updateNavBar();
+
     const firstCategory = document.getElementById('category-1');
     const firstIcon = document.querySelector('[data-category="category-1"] .toggle-icon');
     
