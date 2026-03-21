@@ -1,5 +1,5 @@
 import './style.css';
-import { API_URL, requireAuth } from './auth';
+import { updateNavBar, API_URL, requireAuth } from './auth';
 
 // Ensure user is admin before allowing access
 async function checkAdminAccess() {
@@ -100,6 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hasAccess = await checkAdminAccess();
     if (!hasAccess) return;
     
+    ///NAV BAR
+    await updateNavBar();
+
     // Setup form handlers
     setupPromoteDoctorForm();
     setupPromoteAdminForm();
