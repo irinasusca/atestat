@@ -26,6 +26,7 @@
                     throw new Error(error.message);
                 }
                 
+                await new Promise(resolve => setTimeout(resolve, 300));
                 // Redirect to programari
                 window.location.href = './programari.html';
                 
@@ -205,6 +206,7 @@
                      
                  } else {
                      alert('Login successful!');
+                     await new Promise(resolve => setTimeout(resolve, 300));
                      window.location.href = './index.html';
                  }
              } catch (error) {
