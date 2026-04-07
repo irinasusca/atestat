@@ -14,7 +14,7 @@
             try {
                 const googleToken = response.credential;
                 
-                const res = await fetch('https://atestat.onrender.com/api/auth/google', {
+                const res = await fetch('/api/auth/google', {
                     method: 'POST',
                     credentials: 'include',
                     headers: { 'Content-Type': 'application/json' },
@@ -35,9 +35,9 @@
             }
         }
     </script>
-  <script type="module" crossorigin src="/atestat/assets/auth-D6G5FAnJ.js"></script>
-  <script type="module" crossorigin src="/atestat/assets/main-jbAApKU-.js"></script>
-  <link rel="stylesheet" crossorigin href="/atestat/assets/auth-D89Ljx6_.css">
+  <script type="module" crossorigin src="/assets/auth-DmvQw-zI.js"></script>
+  <script type="module" crossorigin src="/assets/main-BwYP--Tk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-D89Ljx6_.css">
 </head>
 <body class="min-h-screen relative">
 
@@ -276,7 +276,7 @@
             // TODO: Add your API call here
             // Example:
              try {
-                 const response = await fetch('https://atestat.onrender.com/api/auth/register', {
+                 const response = await fetch('/api/auth/register', {
                      method: 'POST',
                      headers: { 'Content-Type': 'application/json' },
                      credentials: 'include',
