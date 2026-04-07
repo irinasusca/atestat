@@ -21,7 +21,7 @@ export async function getDoctorOrar(req, res, next) {
     }
 }
 
-//put /api/doctor/orar/ (idempotent)
+//put /api/doctor/orar/ (idempotent, adica faci de doua ori se intampla acelasi lucru)
 
 export async function udpateDoctorOrar(req, res, next) {
     try {

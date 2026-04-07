@@ -25,29 +25,29 @@ export async function authenticateUser(req, res, next) {
     try {
         let token;
         
-        // Check for token in cookies
+        //Check for token in cookies
         if (req.cookies.token) {
             token = req.cookies.token;
         } 
-        // Check Authorization header
+        //Facem si check Authorization header
         else if (req.headers.authorization && req.headers.authorization.startsWith("Bearer ")) {
             token = req.headers.authorization.split(" ")[1];
         } 
-        // No token found
+        //Daca nu gaseste
         else {
             return res.status(401).json({ message: "Authentication required" });
         }
         
-        // Verify token
+        //Trimitem la authService.verify
         const user = await authService.verify(token);
         if (!user) {
             return res.status(401).json({ message: "Invalid token" });
         }
         
-        // Attach user to request object
+        //Attach user to request object
         req.user = user;
         
-        // Continue to next middleware/controller
+        //Continue to next middleware/controller
         next();
     } catch (err) {
         next(err);

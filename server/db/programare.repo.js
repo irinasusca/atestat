@@ -125,7 +125,7 @@ export async function deleteInvalidForDay(id_doctor, zi_saptamana) {
   );
 }
 
-///A patient shouldn't be able to book more than 4 upcoming appointments, to prevent abuse
+///A patient shouldn't be able to book more than 4 upcoming appointments, ca la regina maria
 ///NOW() in bucharest, pt DB server neon
 export async function countUpcomingProgramariByPacient(id_pacient) {
     const {rows} = await pool.query(

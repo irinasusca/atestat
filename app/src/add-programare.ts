@@ -30,15 +30,15 @@ let currentUser: any = null;
 // Check authentication and update navbar when page loads
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    console.log('1. Starting DOMContentLoaded'); // DEBUG
+    //console.log('1. Starting DOMContentLoaded'); // DEBUG
     currentUser = await requireAuth(); // Redirect to login if not authenticated
-    console.log('2. Current user set:', currentUser); // DEBUG
+    //console.log('2. Current user set:', currentUser); // DEBUG
     
     await updateNavBar();
-    console.log('3. Navbar updated'); // DEBUG
+    //console.log('3. Navbar updated'); // DEBUG
         
     setupEventListeners();
-    console.log('5. Event listeners setup'); // DEBUG
+    //console.log('5. Event listeners setup'); // DEBUG
 
     renderOptions('specialitate'); // Show specialitati by default
   } catch (error) {
@@ -256,9 +256,9 @@ function clearSearch(): void {
 }
 
 function verificaDisponibilitatea(): void {
-    console.log('Verifică disponibilitatea clicked');
-    console.log('Selected specialități:', selectedSpecialitati);
-    console.log('Selected locații:', selectedLocatii);
+    //console.log('Verifică disponibilitatea clicked');
+    //console.log('Selected specialități:', selectedSpecialitati);
+    //console.log('Selected locații:', selectedLocatii);
     
     // Store filters in sessionStorage to pass to next page
     sessionStorage.setItem('selectedSpecialitati', JSON.stringify(selectedSpecialitati));

@@ -62,7 +62,7 @@ async function loadDoctorSchedule(): Promise<void> {
         }
 
         const program = await response.json();
-        console.log('Loaded program:', program);
+        //console.log('Loaded program:', program);
         
         // Initialize selectedSlots from existing program
         selectedSlots = {};
@@ -82,7 +82,7 @@ async function loadDoctorSchedule(): Promise<void> {
             selectedSlots[zi].push(ora);
         });
         
-        console.log('Selected slots:', selectedSlots);
+        //console.log('Selected slots:', selectedSlots);
         
     } catch (error) {
         console.error('Error loading schedule:', error);
@@ -173,7 +173,7 @@ async function saveSchedule(): Promise<void> {
     }
     
     try {
-        console.log('Saving schedule:', selectedSlots);
+        //console.log('Saving schedule:', selectedSlots);
         
         // Send updates for each day
         const updates = DAYS.map(async (day) => {

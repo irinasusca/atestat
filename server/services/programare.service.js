@@ -27,7 +27,7 @@ export async function is_programare_valid_date(
 
   ///daca un loc exista, si nu este programare, atunci proceed. 
   ///practic daca gaseste conflict la nivelul doctorului returneaza fals.
-  console.log("Available slots for doctor", id_doctor, "on", data_calendar, ":", availableSlots);
+  //console.log("Available slots for doctor", id_doctor, "on", data_calendar, ":", availableSlots);
   return availableSlots.some(slot => slot.ora_start === ora);
 }
 
@@ -44,7 +44,7 @@ export async function does_programare_conflict(id_doctor, id_pacient, data_progr
 
 export async function create_programare(id_pacient, id_doctor, data_programare) {
 
-    console.log("Creating programare with pacient:", id_pacient, "doctor:", id_doctor, "data:", data_programare);
+    //console.log("Creating programare with pacient:", id_pacient, "doctor:", id_doctor, "data:", data_programare);
     ///Exista user, exista doctor? 
     const pacient = await pacientRepo.findByPacientId(id_pacient);
     if(!pacient) throw new Error("Nu exista acest pacient!");

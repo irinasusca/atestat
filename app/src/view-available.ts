@@ -105,13 +105,13 @@ async function loadAvailableSlots(): Promise<void> {
         const day = String(selectedDate.getDate()).padStart(2, '0');
         const data_programare = `${year}-${month}-${day}`;
         
-        console.log('Fetching available slots with:', {
+        /*console.log('Fetching available slots with:', {
             locatii: selectedLocatii.length > 0 ? selectedLocatii : null,
             specializari: selectedSpecialitati.length > 0 ? selectedSpecialitati : null,
             zi_saptamana,
             data_programare,
             selectedDate: selectedDate.toString()
-        });
+        });*/
         
         const response = await fetch(`${API_URL}/api/programari/available`, {
             method: 'POST',
@@ -127,7 +127,7 @@ async function loadAvailableSlots(): Promise<void> {
             })
         });
         
-        console.log('Response status:', response.status);
+        //console.log('Response status:', response.status);
         
         if (!response.ok) {
             const errorData = await response.json();
@@ -136,7 +136,7 @@ async function loadAvailableSlots(): Promise<void> {
         }
         
         availableDoctors = await response.json();
-        console.log('Available doctors:', availableDoctors);
+        //console.log('Available doctors:', availableDoctors);
         
         if (availableDoctors.length === 0) {
             emptyState?.classList.remove('hidden');
@@ -233,7 +233,7 @@ function createDoctorCard(doctor: any): string {
 function openConfirmationPopup(slotInfo: any): void {
     selectedSlot = slotInfo;
     
-    console.log('Opening popup with slotInfo:', slotInfo);
+    //console.log('Opening popup with slotInfo:', slotInfo);
     
     // Update popup content
     document.getElementById('confirm-doctor-name')!.textContent = `Dr. ${slotInfo.doctorName}`;
@@ -245,7 +245,7 @@ function openConfirmationPopup(slotInfo: any): void {
     const imageEl = document.getElementById('confirm-doctor-image') as HTMLImageElement;
     if (imageEl) {
         imageEl.src = `./doctors/${imageName}`;
-        console.log('Setting image to:', `./doctors/${imageName}`);
+       /// console.log('Setting image to:', `./doctors/${imageName}`);
     }
     
     const day = selectedDate.getDate();
@@ -260,7 +260,7 @@ function openConfirmationPopup(slotInfo: any): void {
 }
  
 export function closeConfirmationPopup(): void {
-    console.log('Closing confirmation popup');
+    //console.log('Closing confirmation popup');
     document.getElementById('confirmation-popup')?.classList.add('hidden');
     selectedSlot = null;
 }
@@ -276,11 +276,11 @@ async function confirmBooking(): Promise<void> {
         const day = String(selectedDate.getDate()).padStart(2, '0');
         const data_programare = `${year}-${month}-${day}T${time}:00`;
         
-        console.log('Creating programare:', {
+        /*('Creating programare:', {
             id_doctor: selectedSlot.doctorId,
             data_programare,
             selectedDate: selectedDate.toString()
-        });
+        });*/
         
         const response = await fetch(`${API_URL}/api/programari`, {
             method: 'POST',

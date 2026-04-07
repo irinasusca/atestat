@@ -87,7 +87,7 @@ export async function createProgramare(req, res, next) {
         
         res.status(201).json(programare);
     } catch (err) {
-        console.log("fufu");
+        //console.log("fufu");
         // Handle specific errors from your service
         if (err.message.includes("Nu exista")) {
             return res.status(404).json({ message: err.message });
@@ -105,7 +105,7 @@ export async function createProgramare(req, res, next) {
 
 export async function deleteProgramare(req, res, next) {
     try {
-        console.log("Attempting to delete programare with id:", req.params.id);
+        //console.log("Attempting to delete programare with id:", req.params.id);
         const { id } = req.params;
         const userId = req.user.id_utilizator;
         

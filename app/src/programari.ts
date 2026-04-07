@@ -9,18 +9,18 @@ let currentUser: any = null;
 // Check authentication and update navbar when page loads
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    console.log('1. Starting DOMContentLoaded'); // DEBUG
+    //('1. Starting DOMContentLoaded'); // DEBUG
     currentUser = await requireAuth(); // Redirect to login if not authenticated
-    console.log('2. Current user set:', currentUser); // DEBUG
+    //console.log('2. Current user set:', currentUser); // DEBUG
     
     await updateNavBar();
-    console.log('3. Navbar updated'); // DEBUG
+    //console.log('3. Navbar updated'); // DEBUG
     
     await loadProgramari();
-    console.log('4. Programari loaded'); // DEBUG
+    //console.log('4. Programari loaded'); // DEBUG
     
     setupEventListeners();
-    console.log('5. Event listeners setup'); // DEBUG
+    //console.log('5. Event listeners setup'); // DEBUG
   } catch (error) {
     console.error('ERROR in DOMContentLoaded:', error);
   }
@@ -92,7 +92,7 @@ async function loadProgramari(): Promise<void> {
     const container = document.getElementById('appointments-container');
     
     try {
-        console.log('Loading programari for user:', currentUser); // DEBUG
+        //console.log('Loading programari for user:', currentUser); // DEBUG
         
         loadingState?.classList.remove('hidden');
         container?.classList.add('hidden');
@@ -102,7 +102,7 @@ async function loadProgramari(): Promise<void> {
             ? `${API_URL}/api/programari/doctor/${currentUser.id_utilizator}`
             : `${API_URL}/api/programari/pacient/${currentUser.id_utilizator}`;
 
-        console.log('Fetching from endpoint:', endpoint); // DEBUG
+        //console.log('Fetching from endpoint:', endpoint); // DEBUG
 
         const response = await fetch(endpoint, {
             method: 'GET',
@@ -112,7 +112,7 @@ async function loadProgramari(): Promise<void> {
             }
         });
 
-        console.log('Response status:', response.status); // DEBUG
+        //console.log('Response status:', response.status); // DEBUG
 
         if (!response.ok) {
             if (response.status === 401) {
@@ -123,7 +123,7 @@ async function loadProgramari(): Promise<void> {
         }
 
         toateProgramarile = await response.json();
-        console.log('Loaded programari:', JSON.stringify(toateProgramarile, null, 2)); // DEBUG
+        //console.log('Loaded programari:', JSON.stringify(toateProgramarile, null, 2)); // DEBUG
         
         updateButtonText(); // Update button based on role
         renderProgramari();

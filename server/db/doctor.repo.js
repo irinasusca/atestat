@@ -91,8 +91,8 @@ export async function findDoctorsWithAvailableSlots(
   values.push(zi_saptamana);
   values.push(data_calendar);
 
-  console.log("Executing query with values:", values);
-  console.log("date data:", data_calendar, zi_saptamana);
+  //console.log("Executing query with values:", values);
+  //console.log("date data:", data_calendar, zi_saptamana);
 
   const { rows } = await pool.query(
     `
@@ -123,7 +123,7 @@ export async function findDoctorsWithAvailableSlots(
     values
   );
 
-  console.log(rows);
+  //console.log(rows);
   return rows;
 }
 
@@ -160,22 +160,6 @@ export async function updateProgramDoctor(id_doctor, zi_saptamana) {
 export async function findProgramByDoctorId(id_doctor) {
     const {rows} = await pool.query("SELECT * FROM doctor_program WHERE id_doctor = $1", [id_doctor]);
     return rows;
-}
-
-///Pentru pagina de programari, ca sa vedem disponibilitatea doctorului
-///Returneaza intervale orare dintr-o zi pe care ulterior o verificam cu programarile deja existente
-///acum am modificat ca intervalele sa fie obligatoriu doar o ora, deci ora_end va fi tot timpul ora_start +1.
-
-export async function getDoctorIntervals(id_doctor, zi_saptamana) {
-  const { rows } = await pool.query(
-    `SELECT ora_start, ora_end
-     FROM doctor_program
-     WHERE id_doctor = $1
-       AND zi_saptamana = $2`,
-    [id_doctor, zi_saptamana]
-  );
-
-  return rows;
 }
 
 ///Gasim available slots pentru un doctor intr-o zi anume. Adica interactionam si cu programare table.
