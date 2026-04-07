@@ -2,13 +2,8 @@ import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/atestat/',
+  base: '/',
 
-  server: {
-    proxy: {
-        '/api': 'https://atestat.onrender.com',
-    }
-  },
   plugins: [
     tailwindcss(),
   ],

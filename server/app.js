@@ -2,13 +2,18 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
 const corsOptions = {
     origin: [ 
         "http://localhost:5173",
-        "https://irinasusca.github.io" 
+        //"https://irinasusca.github.io" 
     ],
     optionsSuccessStatus: 200,
     credentials: true
@@ -29,6 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 ///nu inteleg de ce, dar doctor trebuie sa fie deasupra la restul
 ///altfel da 404 orice request catre doctor routes
+
+app.use(express.static(path.join(__dirname, '../app/dist')));
 
 app.use("/api/doctor", doctorRoutes);
 app.use("/api/auth", authRoutes);
