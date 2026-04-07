@@ -24,15 +24,13 @@ const LOCATII = [
 let selectedSpecialitati: string[] = [];
 let selectedLocatii: string[] = [];
 let currentFilterType: 'specialitate' | 'locatie' = 'specialitate';
-let currentUser: any = null;
 
 
 // Check authentication and update navbar when page loads
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     //console.log('1. Starting DOMContentLoaded'); // DEBUG
-    currentUser = await requireAuth(); // Redirect to login if not authenticated
-    //console.log('2. Current user set:', currentUser); // DEBUG
+    requireAuth(); // Redirect to login if not authenticated
     
     await updateNavBar();
     //console.log('3. Navbar updated'); // DEBUG
