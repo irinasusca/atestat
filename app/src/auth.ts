@@ -23,7 +23,7 @@ export async function verifyAuth(): Promise<User | null> {
   try {
     const response = await fetch(`${API_URL}/api/auth/verify`, {
       method: 'GET',
-      credentials: 'include', // Important: this sends cookies with the request
+      credentials: 'include', // asa includem cookies in request
       headers: {
         'Content-Type': 'application/json',
       },

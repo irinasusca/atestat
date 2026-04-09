@@ -182,15 +182,8 @@ function renderProgramari(): void {
 // Create programare card for patients (shows doctor info)
 function createCardProgramarePacient(programare: any): string {
     const data = new Date(programare.data_programare);
-    const dataStr = data.toLocaleDateString('ro-RO', { 
-        day: '2-digit', 
-        month: 'short', 
-        year: 'numeric' 
-    });
-    const oraStr = data.toLocaleTimeString('ro-RO', { 
-        hour: '2-digit', 
-        minute: '2-digit' 
-    });
+    const dataStr = `${data.getUTCDate().toString().padStart(2, '0')} ${data.toLocaleDateString('ro-RO', { month: 'short', timeZone: 'UTC' })} ${data.getUTCFullYear()}`;
+    const oraStr = `${data.getUTCHours().toString().padStart(2, '0')}:${data.getUTCMinutes().toString().padStart(2, '0')}`;
     
     const isPast = data < new Date();
     const cancelButton = !isPast ? `
@@ -236,18 +229,11 @@ function createCardProgramarePacient(programare: any): string {
 
 // Create programare card for doctors (shows patient info)
 function createCardProgramareDoctor(programare: any): string {
+    //aici am schimbat pt ca mutand la render, s-a shiftat ora la inca un +3. conversii stuff. dei nu trebuie sa shiftam noi 
     const data = new Date(programare.data_programare);
-    const dataStr = data.toLocaleDateString('ro-RO', { 
-        day: '2-digit', 
-        month: 'short', 
-        year: 'numeric' 
-    });
-    const oraStr = data.toLocaleTimeString('ro-RO', { 
-        hour: '2-digit', 
-        minute: '2-digit' 
-    });
-
-
+    const dataStr = `${data.getUTCDate().toString().padStart(2, '0')} ${data.toLocaleDateString('ro-RO', { month: 'short', timeZone: 'UTC' })} ${data.getUTCFullYear()}`;
+    const oraStr = `${data.getUTCHours().toString().padStart(2, '0')}:${data.getUTCMinutes().toString().padStart(2, '0')}`;
+    
     return `
         <div class="bg-gray-50 rounded-2xl shadow-lg p-6 relative">
             

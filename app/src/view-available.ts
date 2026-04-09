@@ -35,7 +35,7 @@ function setupEventListeners(): void {
     document.getElementById('close-date-picker')?.addEventListener('click', closeDatePicker);
     document.getElementById('date-input')?.addEventListener('change', handleDateChange);
     document.getElementById('confirm-booking-btn')?.addEventListener('click', confirmBooking);
-    document.getElementById('close-popup-btn')?.addEventListener('click', closeConfirmationPopup);  // ❌ MISSING
+    document.getElementById('close-popup-btn')?.addEventListener('click', closeConfirmationPopup);  
     
     // Close popups when clicking outside
     document.getElementById('date-picker-popup')?.addEventListener('click', (e) => {
