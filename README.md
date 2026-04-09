@@ -43,6 +43,9 @@ The platform has two main features:
 
 **Database**: Postgresql, hosted with Neon
 
+<img width="1486" height="762" alt="image" src="app/public/ERD.png" />
+
+
 **Auth & Security**:
 - JWT (JSON Web Tokens) for session management via HttpOnly cookies
 - bcrypt for password hashing
@@ -91,10 +94,13 @@ atestat/
     ├── controllers/      # Route handlers
     ├── services/         # Business logic
     ├── routes/           # Express route definitions
-    ├── middlewares/       # Auth and role middleware
+    ├── middlewares/      # Auth and role middleware
     ├── db/               # Database queries and repos
     └── config/           # App configuration
 ```
+
+The flow is something like this: 
+- frontend sends request → route passes it forward → controller calls service → service calls db repo → db repo queries database.
 
 ## Security Considerations
 
